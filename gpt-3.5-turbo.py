@@ -11,9 +11,10 @@ def send_welcome(message):
     bot.send_message(message.chat.id, "Привет! Я чат бот можете спросить, что угодно")
 
 messeges = [
-    {"role": "system", "content": "Your job is to respond to customer feedback, in the marketplace wildberries. Our Product Women's Oversize Shirt."},
-    {"role": "user", "content": "The color does not match, much darker."},
-    {"role": "manager", "content": "I am sorry to hear that the color did not meet your expectations and was much darker. We will pass the information on to quality control"},
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Who won the world series in 2020?"},
+    {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
+    {"role": "user", "content": "Where was it played?"}
     ]
 
 def update(messages, role, content):
@@ -27,7 +28,7 @@ def echo_all(message):
         response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messeges
-)
+        )
         bot.reply_to(message, response.choices[0]['message']['content'])
 
     except Exception as e:
